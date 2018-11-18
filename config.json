@@ -1,0 +1,50 @@
+{
+    "parameters": {
+        "prizes": [100],
+        "reservedTags": [0],
+        "maxParticipationRatio": 0.05,
+        "platformFeeRatio": 0.01,
+        "donationFeeRatio": 0.04,
+        "database": "ZerpLotto.db",
+        "connection": "wss://s2.ripple.com:443",
+        "notify": true,
+        "startFromLedger": -1,
+        "reservedXRP": 20
+    },
+    "accounts": {
+        "lotto": {
+            "address": "",
+            "secret": ""
+        },
+        "fees": {
+            "address": "",
+            "destinationTag": null
+        },
+        "donations": {
+            "Unicef FR": {
+                "address": "rLHzPsX6oXkzU2qL12kHCH8G8cnZv1rBJh",
+                "destinationTag": 3031558911
+            }
+        }
+    },
+    "credentials": {
+        "twitter": {
+            "consumer_key": "",
+            "consumer_secret": "",
+            "access_token_key": "",
+            "access_token_secret": ""
+        },
+        "telegram": {
+            "username": "",
+            "key": "",
+            "chat_id": 
+        },
+        "pastebin": {
+            "api_dev_key": "",
+            "api_user_key": ""
+        }
+    },
+    "links": {
+        "bithomp" : "https://bithomp.com/explorer/"
+    }
+}

@@ -1,0 +1,113 @@
+body {
+    font-family: "Roboto","Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+
+#header {
+    height: 150px;
+    width: 100%;
+    background-color: #c2e8c6;
+    overflow: hidden;
+}
+
+#headerImage {
+    height: 100%;
+    width: 110%;
+    margin-left: -5%;
+    margin-right: -5%;
+    object-fit: cover;
+}
+
+#logo {
+    width: 300px;
+    display: block;
+    margin-top: -65px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#tagline {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 30px;
+    margin-bottom: 50px;
+    font-weight: 250;
+    font-size: 30px;
+    text-align: center;
+}
+
+.container-full {
+    margin: 0 auto;
+    width: 95%;
+}
+
+#rightPanel {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.text {
+    font-size: 20px;
+    font-weight: 250;
+}
+
+#conditions-check {
+    margin-left: 18px;
+}
+
+#playButton {
+    width: 100px;
+    height: 50px;
+    margin-top: 50px;
+    margin-bottom: 30px;
+}
+
+#QRdiv {
+    margin-top: 30px;
+    background-color: #009bdd;
+    width: 500px;
+    max-width: 90vw;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 30px 30px 30px 30px;
+    text-align: center;
+    margin-bottom: 100px;
+    border-radius: 20px;
+    animation:blink 1000ms infinite alternate;
+}
+
+#QR {
+    width: 70%;
+    height: 70%;
+}
+
+#error {
+    text-align: center;
+    font-size: 200px;
+    font-weight: 250;
+}
+
+#notFound {
+    text-align: center;
+    font-size: 60px;
+    font-weight: 250;
+    margin-bottom: 100px;
+}
+
+#footer {
+    height: 60px;
+    width: 100%;
+    background-color: #cbcec5;
+    display: flex; 
+    margin: auto;
+}
+
+#footerText {
+    margin: auto; /* Important */ 
+    text-align: center; 
+}
+
+@keyframes blink {
+    from { background-color:rgba(0,155,221,1); } 
+    to { background-color:rgba(0,155,221,0.2); }
+};
+
