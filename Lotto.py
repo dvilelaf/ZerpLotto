@@ -573,7 +573,7 @@ class Lotto:
     def processPayments(self):
 
         print('Processing payments...')
-        result = subprocess.run(['node', './processPayments.js'],
+        result = subprocess.run(['/usr/bin/node', './processPayments.js'],
                                 stdout=subprocess.PIPE,
                                 stderr=subprocess.PIPE)
 
