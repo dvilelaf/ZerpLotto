@@ -583,8 +583,6 @@ class Lotto:
         if result.returncode != 0:
             raise LottoException('Error while processing payments')
 
-        self.checkPayments()
-
 
     def backup(self):
         filename = 'XRPLotto-backup-{}.db'.format(datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
@@ -626,6 +624,9 @@ if __name__ == "__main__":
             if lotto.update():
 
                 lotto.processPayments()
+
+            # Check payments    
+            lotto.checkPayments()
 
     except Exception as e:
 
