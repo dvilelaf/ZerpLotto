@@ -106,7 +106,7 @@ def balance(bot, update):
     accountInfo = ledger.getAccountInfo(config['accounts']['lotto']['address'])
     accountInfo['account_data']['Balance'] = int(accountInfo['account_data']['Balance']) / 1e6
 
-    message = 'Available balance: {} XRP'.format(float(accountInfo['account_data']['Balance']) - config['parameters']['reservedXRP'])
+    message = 'Available balance: {} XRP'.format(round(float(accountInfo['account_data']['Balance']) - config['parameters']['reservedXRP'], 4))
     update.message.reply_text(message)
 
 
