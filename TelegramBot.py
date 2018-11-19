@@ -30,39 +30,47 @@ db.init(config['parameters']['database'])
 
 def status(bot, update):
 
-    db.connect(reuse_if_open=True)
+    try:
 
-    participants = Participant.select()
+        db.connect(reuse_if_open=True)
 
-    prizestatus = {p: {'participants': 0, 'balance': 0} for p in config['parameters']['prizes']}
+        participants = Participant.select()
 
-    totalPlayedBalance = 0
+        prizestatus = {p: {'participants': 0, 'balance': 0} for p in config['parameters']['prizes']}
 
-    for p in participants:
-        prizestatus[p.prize]['participants'] += 1
-        prizestatus[p.prize]['balance'] += p.amount
+        totalPlayedBalance = 0
 
-    db.close()
+        for p in participants:
+            prizestatus[p.prize]['participants'] += 1
+            prizestatus[p.prize]['balance'] += p.amount
 
-    message = ''
+        message = ''
 
-    for p in prizestatus:
+        for p in prizestatus:
 
-        percent = round(prizestatus[p]['balance'] / float(p) * 100)
+            percent = round(prizestatus[p]['balance'] / float(p) * 100)
 
-        message += 'PRIZE: {}\n' \
-                '- Participants: {}\n' \
-                '- Balance: {} XRP ({}%)\n' \
-                .format(p,
-                        prizestatus[p]['participants'],
-                        round(prizestatus[p]['balance'], 4),
-                        percent)
+            message += 'PRIZE: {}\n' \
+                    '- Participants: {}\n' \
+                    '- Balance: {} XRP ({}%)\n' \
+                    .format(p,
+                            prizestatus[p]['participants'],
+                            round(prizestatus[p]['balance'], 4),
+                            percent)
 
-        totalPlayedBalance += float(prizestatus[p]['balance'])
+            totalPlayedBalance += float(prizestatus[p]['balance'])
 
-    message += 'PLAYED BALANCE: {}'.format(totalPlayedBalance)
+        message += 'PLAYED BALANCE: {}'.format(totalPlayedBalance)
 
-    update.message.reply_text(message)
+        update.message.reply_text(message)
+
+    except OperationalError:
+
+        update.message.reply_text('Empty database!')
+
+    finally:
+
+        db.close()
 
 
 def last(bot, update):
@@ -104,23 +112,33 @@ def balance(bot, update):
 
 def listPayments(bot, update):
 
-    db.connect(reuse_if_open=True)
+    try:
 
-    pendingPayments = Payment.select().where(Payment.status == 'PENDING')
+        db.connect(reuse_if_open=True)
 
-    message = []
+        pendingPayments = Payment.select().where(Payment.status == 'PENDING')
 
-    for p in pendingPayments:
+        message = []
 
-        message += 'Payment ID {}:\n' \
-                   'Type: {}\n' \
-                   'Destination: {}\n' \
-                   'Amount: {}\n' \
-                   '-----------------\n' \
-                   .format(p[id], p[TXtype], p[destination], p[amount])
+        for p in pendingPayments:
 
-    update.message.reply_text(message)
-    db.close()
+            message += 'Payment ID {}:\n' \
+                       'Type: {}\n' \
+                       'Destination: {}\n' \
+                       'Amount: {}\n' \
+                       '-----------------\n' \
+                       .format(p[id], p[TXtype], p[destination], p[amount])
+
+        update.message.reply_text(message)
+
+
+    except OperationalError:
+
+        update.message.reply_text('Empty database!')
+
+    finally:
+
+        db.close()
 
 
 def lock(bot, update):
