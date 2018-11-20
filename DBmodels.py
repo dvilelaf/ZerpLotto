@@ -13,6 +13,7 @@ class Payment(BaseModel):
     TXtype = TextField()
     status = TextField()
     destination = TextField()
+    destinationTag = IntegerField(null = True)
     amount = DoubleField()
     TXid = TextField(null = True)
     ledgerIndex = IntegerField(null = True)

@@ -303,6 +303,9 @@ class Lotto:
                                       amount = donationAmount,
                                       memo = 'ZERPLOTTO.COM_DONATION::Prize_id={}'.format(prize.id))
 
+                    if 'destinationTag' in self.config['accounts']['donations'][donationAccount]:
+                        payment.destinationTag = self.config['accounts']['donations'][donationAccount]['destinationTag']
+
                     payment.save()
 
                     donation = Donation(destination = donationAddress,

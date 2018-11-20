@@ -24,25 +24,26 @@ async function sendXRP(sender, secret, amount, fee, destination, memo, tag) {
       maxAmount: {
         value: amount,
         currency: 'XRP'
-      },
-      tag: tag
+      }
     },
     destination: {
       address: destination,
       amount: {
         value: amount,
         currency: 'XRP'
-      },
-      tag: tag
+      }
     },
     memos: [
       {
-        data: memo
-        //format: 'text/plain',
-        //type:
+        data: memo,
+        format: 'text/plain'
       }
     ]
   };
+
+  if (tag != null) {
+    payment.destination.tag = tag;
+  }
 
   // Build instuctions
   const instructions = {
@@ -51,20 +52,26 @@ async function sendXRP(sender, secret, amount, fee, destination, memo, tag) {
 
   console.log('Sending ' + amount + ' XRP to ' + destination);
 
-  // Prepare the payment
-  const preparedTX = await api.preparePayment(sender, payment, instructions);
+  try {
+    // Prepare the payment
+    const preparedTX = await api.preparePayment(sender, payment, instructions);
 
-  // Sign the payment
-  const signedTX = api.sign(preparedTX.txJSON, secret);
+    // Sign the payment
+    const signedTX = api.sign(preparedTX.txJSON, secret);
 
-  // Submit the payment
-  const result = await api.submit(signedTX['signedTransaction']);
+    // Submit the payment
+    const result = await api.submit(signedTX['signedTransaction']);
 
-  // Return TX hash on successful TX
-  if ('resultCode' in result && result['resultCode'] == 'tesSUCCESS') {
+    // Return TX hash on successful TX
+    if ('resultCode' in result && result['resultCode'] == 'tesSUCCESS') {
       return signedTX.id;
-  } else {
+    } else {
       return null;
+    }
+
+  } catch (e) {
+    console.error(e.message);
+    process.exit(-1);
   }
 }
 

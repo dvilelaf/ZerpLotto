@@ -25,7 +25,7 @@ try {
 }
 
 // Sends XRP payments ---------------------------------------------------------
-async function sendXRP(amount, fee, destination, memo) {
+async function sendXRP(amount, fee, destination, destinationTag, memo) {
 
   // Update amount
   amount = (Math.floor( (amount - fee) * 1e6) / 1e6).toString();
@@ -38,7 +38,6 @@ async function sendXRP(amount, fee, destination, memo) {
         value: amount,
         currency: 'XRP'
       }
-      //tag: 0
     },
     destination: {
       address: destination,
@@ -46,16 +45,18 @@ async function sendXRP(amount, fee, destination, memo) {
         value: amount,
         currency: 'XRP'
       }
-      //tag: 0
     },
     memos: [
       {
         data: memo,
-        format: 'text/plain',
-        //type:
-    }
+        format: 'text/plain'
+      }
     ]
   };
+
+  if (destinationTag != null) {
+    payment.destination.tag = destinationTag;
+  }
 
   // Build instuctions
   const instructions = {
@@ -98,7 +99,7 @@ function run() {
   });
 
   // Get pending transacttions from database
-  var sqlQuery = `SELECT id, destination, amount, memo, TXtype
+  var sqlQuery = `SELECT id, destination, destinationTag, amount, memo, TXtype
                   FROM payment
                   WHERE TXid IS NULL`;
 
@@ -113,6 +114,7 @@ function run() {
                          'type': row.TXtype,
                          'amount': row.amount,
                          'destination': row.destination,
+                         'destinationTag': row.destinationTag,
                          'memo': row.memo,
                          'hash': null});
     })
@@ -129,6 +131,7 @@ function run() {
       transactions[i]['hash'] = await sendXRP(transactions[i].amount,
                                               Number(fee),
                                               transactions[i].destination,
+                                              transactions[i].destinationTag,
                                               transactions[i].memo);
     }
 
