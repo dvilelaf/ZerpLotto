@@ -110,7 +110,7 @@ def balance(bot, update):
     update.message.reply_text(message)
 
 
-def listPayments(bot, update):
+def listPendingPayments(bot, update):
 
     try:
 
@@ -118,7 +118,7 @@ def listPayments(bot, update):
 
         pendingPayments = Payment.select().where(Payment.status == 'PENDING')
 
-        message = []
+        message = ''
 
         for p in pendingPayments:
 
@@ -126,8 +126,11 @@ def listPayments(bot, update):
                        'Type: {}\n' \
                        'Destination: {}\n' \
                        'Amount: {}\n' \
-                       '-----------------\n' \
-                       .format(p[id], p[TXtype], p[destination], p[amount])
+                       '---------------------------------------\n' \
+                       .format(p.id, p.TXtype, p.destination, p.amount)
+
+        if message == '':
+            message = 'No pending payments!'
 
         update.message.reply_text(message)
 
@@ -158,7 +161,7 @@ def unlock(bot, update):
 
 
 def text(bot, update):
-    update.message.reply_text('Available commands:\n/balance\n/status\n/last\n/lock\n/unlock\n/listPayments')
+    update.message.reply_text('Available commands:\n/balance\n/status\n/last\n/lock\n/unlock\n/listPendingPayments')
 
 
 def error(bot, update, error):
@@ -183,7 +186,7 @@ def main():
     dp.add_handler(CommandHandler("balance", balance, filters=Filters.user(username=user)))
     dp.add_handler(CommandHandler("lock", lock, filters=Filters.user(username=user)))
     dp.add_handler(CommandHandler("unlock", unlock, filters=Filters.user(username=user)))
-    dp.add_handler(CommandHandler("listPayments", listPayments, filters=Filters.user(username=user)))
+    dp.add_handler(CommandHandler("listPendingPayments", listPendingPayments, filters=Filters.user(username=user)))
     dp.add_handler(MessageHandler((Filters.text & Filters.user(username=user)), text))
     dp.add_error_handler(error)
 
