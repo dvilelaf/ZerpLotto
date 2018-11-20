@@ -108,17 +108,17 @@ table, th, td {
     height: 60px;
     width: 100%;
     background-color: #cbcec5;
-    display: flex; 
+    display: flex;
     margin: auto;
 }
 
 #footerText {
-    margin: auto; /* Important */ 
-    text-align: center; 
+    margin: auto; /* Important */
+    text-align: center;
 }
 
 @keyframes blink {
-    from { background-color:rgba(0,155,221,1); } 
+    from { background-color:rgba(0,155,221,1); }
     to { background-color:rgba(0,155,221,0.2); }
 };
 
