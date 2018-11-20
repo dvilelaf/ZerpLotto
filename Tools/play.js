@@ -15,7 +15,7 @@ run();
 async function sendXRP(sender, secret, amount, fee, destination, memo, tag) {
 
   // Update amount
-  amount = (Math.round( (amount - fee) * 1e6) / 1e6).toString();
+  amount = (Math.floor( (amount - fee) * 1e6) / 1e6).toString();
 
   // Build payment
   const payment = {
