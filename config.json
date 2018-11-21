@@ -4,7 +4,7 @@
         "reservedTags": [0],
         "maxParticipationRatio": 0.05,
         "platformFeeRatio": 0.01,
-        "donationFeeRatio": 0.04,
+        "donationFeeRatio": 0.09,
         "database": "ZerpLotto.db",
         "connection": "wss://s2.ripple.com:443",
         "notify": true,
@@ -37,7 +37,7 @@
         "telegram": {
             "username": "",
             "key": "",
-            "chat_id": 
+            "chat_id":
         },
         "pastebin": {
             "api_dev_key": "",
