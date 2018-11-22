@@ -6,6 +6,9 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
+    <title>ZerpLotto</title>
+    <link rel="shortcut icon" type="image/png" href="./images/favicon.png"/>
+
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-41675072-2"></script>
     <script>
@@ -16,12 +19,12 @@
       gtag('config', 'UA-41675072-2');
     </script>
 
-    <title>ZerpLotto</title>
-
-    <link rel="shortcut icon" type="image/png" href="./images/favicon.png"/>
-
-    <!-- Bootstrap core CSS -->
+    <!-- Bootstrap core CSS and JS-->
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
 
     <!-- Custom styles for this template -->
     <link href="style.css" rel="stylesheet">
@@ -38,6 +41,7 @@
   </head>
 
   <body>
+
     <div id="header">
         <img src="./images/network.png" id="headerImage" alt="Network">
     </div>
@@ -61,10 +65,10 @@
                     <h2>What is ZerpLotto?</h2>
                     <p>ZerpLotto is an open-source lottery game that distributes XRP prizes. <a href="https://ripple.com/xrp/">XRP</a> is the digital asset native to the XRP Ledger,
                         a decentralized cryptographic ledger (commonly called Blockchain).</p>
-                    <p>ZerpLotto constantly monitorizes a XRP account and all the transactions sent to it. When you send XRP to this account,
-                        you are anonymously buying your participation to the lottery. Once several people have sent enough XRP in order to fullfill the prize,
-                        ZerpLotto will automatically select a winner among the participants and send him/her the prize. Your chances to win are proportional
-                        to your participation amount. At the same time, <strong>a 9% of the prize will be donated to a charity</strong>.</p>
+                    <p>ZerpLotto constantly monitorizes some XRP accounts and all the transactions sent to them. When you send XRP to one of these accounts,
+                        you are anonymously buying your participation ticket to one of the games. Once several people have sent enough XRP in order to fullfill the prize,
+                        or a special date is reached (depending on the game), ZerpLotto will automatically select the winner among the participants and send him/her the prize. 
+                        At the same time, <strong>a 9% of the prizes will be donated to a charity</strong>.</p>
 
                     <p>You can check the last distributed prizes on the <i>Last Prizes</i> section or on <a href="https://twitter.com/zerplotto">Twitter</a>.
                        Also, if you want to know how ZerpLotto works, you can take a look at the <a href="https://github.com/derkomai/ZerpLotto">source code</a>.</p>
@@ -73,122 +77,247 @@
 
                     </br>
 
-                    <h2>Prizes</h2>
-                    <p>Currently, only 100 XRP prizes are being issued. After some prizes are distributed, we will add 1000 XRP or even bigger prizes to ZerpLotto.
-                        Also, in the future we intend to prepare some special-occasion prizes like a Christmas prize.</p>
-                    </br>
+                    <div class="container mt-3" id="tabsContainer">
+                        <h2>Games</h2>
+                        <br>
+                        <!-- Nav tabs -->
+                        <ul class="nav nav-tabs">
+                            <li class="nav-item">
+                            <a class="nav-link active" data-toggle="tab" href="#zlotto"><h3>ZerpLotto Classic</h3></a>
+                            </li>
+                            <li class="nav-item">
+                            <a class="nav-link" data-toggle="tab" href="#xmas"><h3>Xmas Lotto</h3></a>
+                            </li>
+                        </ul>
+                        
+                        <!-- Tab panes -->
+                        <div class="tab-content">
+                
+                            <div id="zlotto" class="container tab-pane active gamePane"><br>
+                                <h3>Description</h3>
 
-                    <h2>How do I play and what are the rules?</h2>
-                    <ul>
-                        <li>
-                            <p>To play, just send your XRP participation deposit to the address shown below. The deposit will be processed,
-                                the fees subtracted and, if you are the winner when the prize is distributed, it will be sent to your address.</p>
-                        </li>
-                        <li>
-                            <p>Your chances to win are proportional to your deposit amount, i.e., if you deposit 2 XRP for the 100 XRP prize, you have a 2% chance of winning.</p>
-                        </li>
-                        <li>
-                            <p>You can select which prize are you participating in by specifying a destination tag when making your deposit. The destination tag <i>100</i>
-                                means you want to participate in the 100 XRP prize (check the available prizes above). If you don't provide a destination tag, the highest value available prize will be selected for you.
-                                Please carefully set your destination tag (or do not set it at all) as some tags are reserved and may result in your deposit not being processed.
-                            </p>
-                        </li>
-                        <li>
-                            <p>It's important that you <strong>send your deposits from an actual XRP account under your control, not from an exchange or similar service</strong>.
-                                Exchanges usually rotate addresses and/or require destination tags to identify their clients, so sending from them may result in
-                                the prize not reaching your account and you having to deal with the exchange support team. You can create a software wallet using
-                                <a href="https://toastwallet.com/">Toast Wallet!</a> or buy a hardware wallet like <a href="https://www.ledger.com/">Ledger wallet</a>
-                                in order to participate.</p>
-                        </li>
-                        <li>
-                            <p>To keep things fun, there is a max participation per deposit equals to the 5% of the prize value. If you surpase this threshold, the exceeding amount will be returned.
-                                You can send as many deposits as you like, but please bear in mind this is a game created for fun purposes only. Play responsibly.</p>
-                        </li>
-                        <li>
-                            <p>Prizes are automatically distributed when the prize value is fullfilled with participations. Once a prize is distributed, another prize is started.</p>
-                        </li>
-                        <li>
-                            <p>Every prize, fee, assotiated donation and participating transactions can be checked on <a href="https://twitter.com/zerplotto">Twitter</a>.</p>
-                        </li>
-                    </p>
-                    </ul>
-                    </br>
+                                <p>ZerpLotto Classic is a raffle-like game. When you send XRP to this game's account,
+                                you are anonymously buying your participation to the raffle. Once several people have sent enough XRP in order to fullfill the prize,
+                                ZerpLotto will automatically select a winner among the participants and send him/her the prize. Your chances to win are proportional
+                                to your participation amount. <strong>A 9% of the prize will be donated to a charity</strong>.</p>
+                                </br>
 
-                    <h2>Fees and charity</h2>
-                    <p>For every participating deposit, a 1% platform fee and a 9% charity fee will be subtracted. The charity fee will then be automatically sent to a charity randomly selected from the supported list.
-                    The remaining 90% will be processed as the actual participation.
-                    </p>
-                    <p>For a charity to be supported in ZerpLotto, it is required that they support XRP donations. Currently, the only supported charity is <a href="https://www.unicef.fr/">Unicef France</a>.</p>
-                    <p>If you know more charities accepting XRP donations, please let us know on <a href="https://twitter.com/zerplotto">Twitter</a>.</p>
-                    </br>
-                </div>
+                                <h2>Prizes</h2>
+                                <p>Currently, only 100 XRP prizes are being issued. After some prizes are distributed, we will add 500 XRP, 1000 XRP or even bigger prizes to ZerpLotto Classic.</p>
+                                </br>
 
-                <div class="text" id="conditions">
+                                <h2>Rules</h2>
+                                <ul>
+                                    <li>
+                                        <p>To play, just send your XRP participation deposit to the address shown below. The deposit will be processed,
+                                            the fees subtracted and, if you are the winner when the prize is distributed, it will be sent to your address.</p>
+                                    </li>
+                                    <li>
+                                        <p>Your chances to win are proportional to your deposit amount, i.e., if you deposit 2 XRP for the 100 XRP prize, you have a 2% chance of winning.</p>
+                                    </li>
+                                    <li>
+                                        <p>When different prizes are open (100 XRP, 500 XRP...), you can select which prize are you participating in by specifying a destination tag when making your deposit. The destination tag <i>100</i>
+                                            means you want to participate in the 100 XRP prize (check the available prizes above). If you don't provide a destination tag, the highest value available prize will be selected for you.
+                                            Please carefully set your destination tag (or do not set it at all) as some tags are reserved and may result in your deposit not being processed.
+                                        </p>
+                                    </li>
+                                    <li>
+                                        <p>It's important that you <strong>send your deposits from an actual XRP account under your control, not from an exchange or similar service</strong>.
+                                            Exchanges usually rotate addresses and/or require destination tags to identify their clients, so sending from them may result in
+                                            the prize not reaching your account and you having to deal with the exchange support team. You can create a software wallet using
+                                            <a href="https://toastwallet.com/">Toast Wallet!</a> or buy a hardware wallet like <a href="https://www.ledger.com/">Ledger wallet</a>
+                                            in order to participate.</p>
+                                    </li>
+                                    <li>
+                                        <p>To keep things fun, there is a max participation per deposit equals to the 5% of the prize value. If you surpase this threshold, the exceeding amount will be returned.
+                                            You can send as many deposits as you like, but please bear in mind this is a game created for fun purposes only. Play responsibly.</p>
+                                    </li>
+                                    <li>
+                                        <p>Prizes are automatically distributed when the prize value is fullfilled with participations. Once a prize is distributed, another prize is started.</p>
+                                    </li>
+                                    <li>
+                                        <p>Every prize, fee, assotiated donation and participating transactions can be checked on <a href="https://twitter.com/zerplotto">Twitter</a>.</p>
+                                    </li>
+                                </p>
+                                </ul>
+                                </br>
 
-                    <h2>Accept conditions and play</h2>
-                    </br>
-                    <p>By playing ZerpLotto, I declare to understand and accept the following conditions:</p>
+                                <h2>Fees and charity</h2>
+                                <p>For every participating deposit, a 1% platform fee and a 9% charity fee will be subtracted. The charity fee will then be automatically sent to a charity randomly selected from the supported list.
+                                The remaining 90% will be processed as the actual participation.
+                                </p>
+                                <p>For a charity to be supported in ZerpLotto, it is required that they support XRP donations. Currently, the only supported charity is <a href="https://www.unicef.fr/">Unicef France</a>.</p>
+                                <p>If you know more charities accepting XRP donations, please let us know on <a href="https://twitter.com/zerplotto">Twitter</a>.</p>
+                                </br>
 
-                    <ol>
-                      <li>I'm over 18 years old.</li>
-                      <li>I'm using this service on my own initiative.</li>
-                      <li>My funds are legitimately obtained.</li>
-                      <li>I'm depositing from an XRP address under my control. I have its secret key and it does not belong to an exchange. Sending from an exchange will probably result in the deposit loss.</li>
-                      <li>There is a participation limit. Exceeding deposits will be returned.</li>
-                      <li>There is a 1% platform fee and a 9% charity donation fee.</li>
-                    </ol>
 
-                    <div id="conditions-check">
-                        <label>
-                            <input type="checkbox" onchange="document.getElementById('playButton').disabled =! this.checked;hideQR();"/>
-                            <strong>I understand and accept the above conditions.</strong>
-                        </label>
+                                <div class="text" id="conditions">
+
+                                    <h2>Accept conditions and play</h2>
+                                    </br>
+                                    <p>By playing ZerpLotto, I declare to understand and accept the following conditions:</p>
+
+                                    <ol>
+                                    <li>I'm over 18 years old.</li>
+                                    <li>I'm using this service on my own initiative.</li>
+                                    <li>My funds are legitimately obtained.</li>
+                                    <li>I'm depositing from an XRP address under my control. I have its secret key and it does not belong to an exchange. Sending from an exchange will probably result in the deposit loss.</li>
+                                    <li>There is a participation limit per deposit. Exceeding deposits will be returned.</li>
+                                    <li>There is a 1% platform fee and a 9% charity donation fee.</li>
+                                    </ol>
+
+                                    <div id="conditions-check">
+                                        <label>
+                                            <input type="checkbox" onchange="document.getElementById('zlPlayButton').disabled =! this.checked;hideQR('zlQRdiv');"/>
+                                            <strong>I understand and accept the above conditions.</strong>
+                                        </label>
+                                    </div>
+
+                                </div>
+
+                                <div id="playZone">
+
+                                    <div style="text-align:center;">
+                                        <button onclick="toggleQR('zlQRdiv')" disabled id="zlPlayButton" class="playButton">Play!</button>
+                                    </div>
+
+                                    <div class="alert alert-danger text" style="text-align: center;">
+                                        ZerpLotto is currently in testing mode, please do not play for now.
+                                    </div>
+
+                                    <div id="zlQRdiv" style="visibility: hidden;" class="QRdiv">
+                                        <p class="text"><strong>Send your deposit to the following address:</strong></p>
+                                        <p class="address">rLoTToEUYiF1UUuy7fWfw5sNFKfaDkZBAs</p>
+                                        <img src="./images/ZerpLottoQR-noborder.png" alt="QR" id="zlQR" class="QR">
+                                        <table id="depositTags">
+                                            <tr>
+                                                <th>Prize</th>
+                                                <th>Destination tag</th>
+                                                <th>Max deposit</th>
+                                            </tr>
+                                            <tr>
+                                                <td>100 XRP</td>
+                                                <td>100</td>
+                                                <td>5 XRP</td>
+                                                </tr>
+                                        </table>
+                                    </div>
+
+                                </div>
+
+                            </div>
+                
+                            <div id="xmas" class="container tab-pane fade gamePane"><br>
+                                <h3>Description</h3>
+
+                                <p>Xmas Special is a one-time classic lottery game. Send 1 XRP to this game's account to buy a ticket for the lottery number you like.
+                                    You can choose any number between 0 and 99,999 by specifying it in your deposit's destination tag. On <strong>December 22th, 2018</strong>,
+                                    the second longest continuously running lottery in the world, the Spanish National Christmas Lottery (a.k.a. <i>"El Gordo"</i>) will be distributed
+                                     (<a href="https://www.laloterianavidad.com/">official website</a>),
+                                    and the ZerpLotto Xmas Special participant whose number is the closest to <i>"El Gordo"</i> winner number will get all the accumulated jackpot minus fees.
+                                    <strong>A 9% of the prize will be donated to a charity</strong>.</p>
+                                </br>
+
+                                <h2>Rules</h2>
+                                <ul>
+                                    <li>
+                                        <p>To play, just send a 1 XRP deposit to the address shown below. The deposit will be processed,
+                                            the fees subtracted and, if you are the winner when the prize is distributed, it will be sent to your address.</p>
+                                    </li>
+                                    <li>
+                                        <p>Set your deposit's destination tag to the number you want to participate with. This number can be any number from 0 to 99,999.
+                                        Non-valid destination tags will be assigned random numbers.</p>
+                                    </li>
+                                    <li>
+                                        <p>It's important that you <strong>send your deposits from an actual XRP account under your control, not from an exchange or similar service</strong>.
+                                            Exchanges usually rotate addresses and/or require destination tags to identify their clients, so sending from them may result in
+                                            the prize not reaching your account and you having to deal with the exchange support team. You can create a software wallet using
+                                            <a href="https://toastwallet.com/">Toast Wallet!</a> or buy a hardware wallet like <a href="https://www.ledger.com/">Ledger wallet</a>
+                                            in order to participate.</p>
+                                    </li>
+                                    <li>
+                                        <p>You can send as many deposits as you like, but please bear in mind this is a game created for fun purposes only. Play responsibly.</p>
+                                    </li>
+                                    <li>The prize will be distributed after the Spanish National Christmas Lottery Prize is announced on December 22th, 2018. You can check it 
+                                        <a href="https://www.laloterianavidad.com/">in the official website</a>. The winner will be the participant whose number is the closest to <i>"El Gordo"</i> winner number.</p>
+                                    </li>
+                                    <li>
+                                        <p>If several participant numbers are equally distant to <i>"El Gordo"</i> winner number, the prize will be split among them.</p>
+                                    </li>
+                                    <li>
+                                        <p>Every prize, fee, assotiated donation and participating transactions can be checked on <a href="https://twitter.com/zerplotto">Twitter</a>.</p>
+                                    </li>
+                                </p>
+                                </ul>
+                                </br>
+
+                                <h2>Fees and charity</h2>
+                                <p>For every participating deposit, a 1% platform fee and a 9% charity fee will be subtracted. The charity fee will be automatically sent to a charity randomly selected from the supported list. The remaining 90% will be processed as the actual participation.
+                                </p>
+                                <p>For a charity to be supported in ZerpLotto, it is required that they support XRP donations. Currently, the only supported charity is <a href="https://www.unicef.fr/">Unicef France</a>.</p>
+                                <p>If you know more charities accepting XRP donations, please let us know on <a href="https://twitter.com/zerplotto">Twitter</a>.</p>
+                                </br>
+
+
+                                <div class="text" id="conditions">
+
+                                    <h2>Accept conditions and play</h2>
+                                    </br>
+                                    <p>By playing ZerpLotto, I declare to understand and accept the following conditions:</p>
+
+                                    <ol>
+                                    <li>I'm over 18 years old.</li>
+                                    <li>I'm using this service on my own initiative.</li>
+                                    <li>My funds are legitimately obtained.</li>
+                                    <li>I'm depositing from an XRP address under my control. I have its secret key and it does not belong to an exchange. Sending from an exchange will probably result in the deposit loss.</li>
+                                    <li>Exceeding deposits will be returned.</li>
+                                    <li>There is a 1% platform fee and a 9% charity donation fee.</li>
+                                    </ol>
+
+                                    <div id="conditions-check">
+                                        <label>
+                                            <input type="checkbox" onchange="document.getElementById('xmasPlayButton').disabled =! this.checked;hideQR('xmasQRdiv');"/>
+                                            <strong>I understand and accept the above conditions.</strong>
+                                        </label>
+                                    </div>
+
+                                </div>
+
+                                <div id="playZone">
+
+                                    <div style="text-align:center;">
+                                        <button onclick="toggleQR('xmasQRdiv')" disabled id="xmasPlayButton" class="playButton">Play!</button>
+                                    </div>
+
+                                    <div class="alert alert-danger text" style="text-align: center;">
+                                        ZerpLotto is currently in testing mode, please do not play for now.
+                                    </div>
+
+                                    <div id="xmasQRdiv" style="visibility: hidden;" class="QRdiv">
+                                        <p class="text"><strong>Send your deposit to the following address:</strong></p>
+                                        <p class="address">rHDHFbDRNvGjbJ6QncFcdorFGcLHiLotto</p>
+                                        <img src="./images/ZLSpecialQR-noborder.png" alt="QR" id="specialQR" class="QR">
+                                        <table id="depositTags">
+                                            <tr>
+                                                <th>Destination tag</th>
+                                                <th>Exact deposit</th>
+                                            </tr>
+                                            <tr>
+                                                <td>Your selected number<br>(0 - 99,999)</td>
+                                                <td>1 XRP</td>
+                                                </tr>
+                                        </table>
+                                    </div>
+
+                                </div>
+
+                            </div>
+                
+                        </div>
                     </div>
 
-                </div>
 
-                <div id="playZone">
 
-                    <div style="text-align:center;">
-                        <button onclick="toggleQR()" disabled id="playButton">Play!</button>
-                    </div>
-
-                    <div class="alert alert-danger text" style="text-align: center;">
-                        ZerpLotto is currently in testing mode, please do not play for now.
-                    </div>
-
-                    <div id="QRdiv" style="visibility: hidden;">
-                        <p class="text"><strong>Send your deposit to the following address:</strong></p>
-                        <p>rLoTToEUYiF1UUuy7fWfw5sNFKfaDkZBAs</p>
-                        <img src="./images/ZerpLottoQR-noborder.png" alt="QR" id="QR">
-                        <table id="depositTags">
-                            <tr>
-                                <th>Prize</th>
-                                <th>Destination tag</th>
-                                <th>Max deposit</th>
-                            </tr>
-                            <tr>
-                                <td>100 XRP</td>
-                                <td>100</td>
-                                <td>5 XRP</td>
-                                </tr>
-                        </table>
-                    </div>
-
-                    <script>
-                        function toggleQR() {
-                            var qr = document.getElementById("QRdiv");
-                            if (qr.style.visibility === "hidden") {
-                                qr.style.visibility = "visible";
-                            }
-                        }
-                    </script>
-
-                    <script>
-                        function hideQR() {
-                            document.getElementById("QRdiv").style.visibility = "hidden";
-                        }
-                    </script>
                 </div>
             </div>
 
@@ -204,6 +333,21 @@
     <div id="footer">
         <p id="footerText">ZerpLotto 2018&emsp;<a href="https://github.com/derkomai/ZerpLotto">Source code</a>&emsp;<a href="https://twitter.com/zerplotto">Contact us at Twitter</a></p>
     </div>
+
+    <script>
+        function toggleQR(id) {
+            var qr = document.getElementById(id);
+            if (qr.style.visibility === "hidden") {
+                qr.style.visibility = "visible";
+            }
+        }
+    </script>
+
+    <script>
+        function hideQR(id) {
+            document.getElementById(id).style.visibility = "hidden";
+        }
+    </script>
 
   </body>
 </html>

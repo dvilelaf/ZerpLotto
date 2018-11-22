@@ -35,9 +35,27 @@ body {
     text-align: center;
 }
 
-.container-full {
+#mainContainer {
     margin: 0 auto;
     width: 95%;
+}
+
+#tabsContainer {
+    padding-left: 0px;
+    padding-right: 0px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    max-width: 100%;
+}
+
+.gamePane {
+    padding-left: 0px;
+    padding-right: 0px;
+    margin-left: 0px;
+    margin-right: 0px;
+    width: 100%;
+    max-width: 100%;
 }
 
 #rightPanel {
@@ -54,14 +72,19 @@ body {
     margin-left: 18px;
 }
 
-#playButton {
+.playButton {
     width: 100px;
     height: 50px;
     margin-top: 50px;
     margin-bottom: 30px;
 }
 
-#QRdiv {
+.address {
+    font-size: 18px;
+    font-weight: 250;
+}
+
+.QRdiv {
     margin-top: 30px;
     background-color: #009bdd;
     width: 500px;
@@ -75,7 +98,7 @@ body {
     animation:blink 1000ms infinite alternate;
 }
 
-#QR {
+.QR {
     width: 70%;
     height: 70%;
     margin-bottom: 30px;
