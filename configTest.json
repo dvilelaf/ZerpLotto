@@ -8,6 +8,7 @@
         "database": "ZerpLottoTest.db",
         "connection": "wss://s.altnet.rippletest.net:51233",
         "notify": true,
+        "processPayments": false,
         "startFromLedger": -1,
         "reservedXRP": 20
     },

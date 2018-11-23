@@ -633,7 +633,13 @@ if __name__ == "__main__":
             # Update and process payments
             if lotto.update():
 
-                lotto.processPayments()
+                if config['parameters']['processPayments']:
+
+                    lotto.processPayments()
+
+                else:
+                    
+                    TelegramNotifier.sendMessage('There are pending payments.')
 
             # Check payments    
             lotto.checkPayments()
