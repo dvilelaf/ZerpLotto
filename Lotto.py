@@ -639,7 +639,7 @@ if __name__ == "__main__":
 
                 else:
                     
-                    TelegramNotifier.sendMessage('There are pending payments.')
+                    TelegramNotifier.sendMessage('There are pending payments.', config)
 
             # Check payments    
             lotto.checkPayments()
