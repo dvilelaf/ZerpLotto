@@ -641,7 +641,7 @@ if __name__ == "__main__":
     except Exception as e:
 
         print(e)
-        TelegramNotifier.sendMessage('ZerpLotto Error: {}'.format(e), config)
+        TelegramNotifier.sendMessage('ZerpLotto Error: {}\nZerpLotto has been locked.'.format(e), config)
         print("Lotto execution stopped")
 
     else:
