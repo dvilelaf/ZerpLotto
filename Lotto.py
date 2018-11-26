@@ -10,6 +10,8 @@ import random
 import Ledger
 from Notifications import Notifications, TelegramNotifier
 
+testing = True
+
 
 class LottoException(Exception):
     def __init__(self, message):
@@ -583,9 +585,17 @@ class Lotto:
 
         nodeCmd = result.stdout.decode("utf-8").replace('\n', '')
 
-        result = subprocess.run([nodeCmd, './processPayments.js'],
-                                stdout=subprocess.PIPE,
-                                stderr=subprocess.PIPE)
+        if testing:
+
+            result = subprocess.run([nodeCmd, './processPayments.js',],
+                                    stdout=subprocess.PIPE,
+                                    stderr=subprocess.PIPE)
+
+        else:
+
+            result = subprocess.run([nodeCmd, './processPayments.js', '--testing=False'],
+                        stdout=subprocess.PIPE,
+                        stderr=subprocess.PIPE)
 
         print(result.stdout.decode("utf-8").replace('\\n', '\n'))
         print(result.stderr.decode("utf-8").replace('\\n', '\n'))
@@ -600,8 +610,6 @@ class Lotto:
 
 
 if __name__ == "__main__":
-
-    testing = True
 
     print('Lotto execution started on {}'.format(datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")))
 
