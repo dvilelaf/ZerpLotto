@@ -1,7 +1,7 @@
 {
     "parameters": {
         "prizes": [100],
-        "reservedTags": [0],
+        "reservedTags": [1],
         "maxParticipationRatio": 0.05,
         "platformFeeRatio": 0.01,
         "donationFeeRatio": 0.09,
