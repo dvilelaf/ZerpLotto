@@ -48,6 +48,7 @@ async function sendXRP(amount, fee, destination, destinationTag, memo) {
     },
     memos: [
       {
+        //type: 'title',
         data: memo,
         format: 'text/plain'
       }
