@@ -42,7 +42,7 @@
         "telegram": {
             "username": "",
             "key": "",
-            "chat_id": 
+            "chat_id": ""
         },
         "pastebin": {
             "api_dev_key": "",
